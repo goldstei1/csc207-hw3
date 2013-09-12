@@ -100,10 +100,10 @@ public class StringUtils {
 	}//splitCSV
 
 	public static String deLeet(String leet) {
-		
+
 		StringBuffer editor = new StringBuffer(leet);
 		int i;
-		
+
 		for(i = 0; i < editor.length(); i++) { //recurse through string
 			switch (editor.charAt(i)) {
 			case '+': editor.setCharAt(i, 't');
@@ -118,16 +118,27 @@ public class StringUtils {
 			break;
 			case '$': editor.setCharAt(i, 's');
 			break;
+			case '(': editor.setCharAt(i, 'c');
+			break;
 			case '|': if(i + 2 < editor.length()) {
 				if(editor.substring(i, i+3).toString().equals("|\\|")) {
 					editor.replace(i, i+3, "n");
 					break;
 				}//if(editor.substring...)
+				if(editor.substring(i, i+3).toString().equals("|_|")) {
+					editor.replace(i,  i+3, "u");
+					break;
+				}//if(editor.substring...)
 			}//if(i+2....)
-			
+
+
 			if(i + 1 < editor.length()) {
 				if(editor.substring(i, i+2).toString().equals("|3")) {
 					editor.replace(i,  i+2, "b");
+					break;
+				}//if(editor.substring...)
+				if(editor.substring(i, i+2).toString().equals("|=")) {
+					editor.replace(i,  i+2, "f");
 					break;
 				}//if(editor.substring...)
 			}//if(i+1.....)
@@ -140,5 +151,35 @@ public class StringUtils {
 		}//for
 		return editor.toString();
 	}//deLeet
+
+	public static String nameGame(String name){
+		//list of vowels
+		char[] vowels = {'a', 'e', 'i', 'o', 'u', 'y'};
+		StringBuffer nameStub = new StringBuffer(name);
+		
+		int v;
+		
+		//remove first letter(s) of name until vowel
+		for (int i = 0; i < nameStub.length(); i++){
+			for(v = 0; v < vowels.length; v++){
+				if (nameStub.charAt(i) == vowels[v]){
+					String ns = nameStub.substring(i, nameStub.length()-1);
+					break;
+				}//if
+			}//for v
+			if(vowels[v] == ns.getChar(0)){
+				break;
+			}//if
+		}//for i
+
+		String line1 = name + "!\n";
+		String line2 = name + ", "+name+" bo"+" B"+ns+" Bonana fanna fo F"+ns+"\n";
+		String line3 = "Fee fy mo M"+ns+", "+name;
+
+		return(line1+line2+line3);
+
+	}//nameGame
 }//StringUtils
+
+
 

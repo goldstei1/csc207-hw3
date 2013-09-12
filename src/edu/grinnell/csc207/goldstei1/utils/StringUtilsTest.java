@@ -32,10 +32,10 @@ public class StringUtilsTest {
     			StringUtils.splitCSV("\"a,b\",c", ','));
     	assertArrayEquals(new String[] { "a", "b,b\"", "c" },
     			StringUtils.splitCSV("a,\"b,b\"\"\",c", ','));
-    	assertArrayEquals(new String[] { "Jenny said", "\"I lost, Bob\"", "to Bob" },
-    			StringUtils.splitCSV("Jenny said, \"\"I lost, Bob\"\", to Bob"));
-    	assertArrayEquals(new String[] { "Jenny said", "\"I lost, Bob\"", "to Bob" },
-    			StringUtils.splitCSV("Jenny said, \"\"I lost, Bob\"\", to Bob"));
+    	assertArrayEquals(new String[] { "Jenny said", " \"I lost", " Bob\"", " to Bob"},
+    			StringUtils.splitCSV("Jenny said, \"\"I lost, Bob\"\", to Bob", ','));
+    	assertArrayEquals(new String[] { "Jenny said", " \"I lost, Bob\"", " to Bob" },
+    			StringUtils.splitCSV("Jenny said, \"\"I lost\",\" Bob\"\", to Bob", ','));
     	
     }
     
@@ -44,6 +44,12 @@ public class StringUtilsTest {
     	assertEquals("e", StringUtils.deLeet("3"));
     	assertEquals("leet", StringUtils.deLeet("133+"));
     	assertEquals("eat banana", StringUtils.deLeet("3@+ |3@|\\|@|\\|@"));
-    	assertEquals("tough, bean", StringUtils.deLeet("+00gh, |334|\|"));
+    	assertEquals("tuff stuff", StringUtils.deLeet("+|_||=|= $+|_||=|="));
+    	assertEquals("last case", StringUtils.deLeet("1@$+ (@$3"));
+    }
+    
+    @Test
+    public void nameGameTest() {
+    	assertEquals("Shirley!\nShirley, Shirley bo Birley Bonana fanna fo Firley\nFee fy mo Mirley, Shirley!", StringUtils.nameGame("Shirley"));
     }
 }
