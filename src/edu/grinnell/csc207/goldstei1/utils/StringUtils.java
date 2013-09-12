@@ -131,14 +131,5 @@ public class StringUtils {
 		  }//for
 	  return editor.toString();
 	  }//deLeet
-  
-  public static void main(String[] args) {
-	  String stuff = "abcdefg";
-	  StringBuffer blah = new StringBuffer(stuff);
-	  blah.replace(2, 4, "hi");
-	  System.out.println(blah.toString());
-	  
-	  
-  }
 }//StringUtils
 
