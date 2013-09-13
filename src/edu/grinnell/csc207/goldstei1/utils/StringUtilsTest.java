@@ -51,5 +51,13 @@ public class StringUtilsTest {
     @Test
     public void nameGameTest() {
     	assertEquals("Shirley!\nShirley, Shirley bo Birley Bonana fanna fo Firley\nFee fy mo Mirley, Shirley!", StringUtils.nameGame("Shirley"));
+    	assertEquals("Mira!\nMira, Mira bo Bira Bonana fanna fo Fira\nFee fy mo Mira, Mira!", StringUtils.nameGame("Mira"));
+    	assertEquals("Annie!\nAnnie, Annie bo Bannie Bonana fanna fo Fannie\nFee fy mo Mannie, Annie!", StringUtils.nameGame("Annie"));
+    	assertEquals("Bo!\nBo, Bo bo Bo Bonana fanna fo Fo\nFee fy mo Mo, Bo!", StringUtils.nameGame("Bo"));
+    	assertEquals("Austin!\nAustin, Austin bo Baustin Bonana fanna fo Faustin\nFee fy mo Maustin, Austin!", StringUtils.nameGame("Austin"));
+    	assertEquals("Lincoln!\nLincoln, Lincoln bo Bincoln Bonana fanna fo Fincoln\nFee fy mo Mincoln, Lincoln!", StringUtils.nameGame("Lincoln"));
+    	assertEquals("Sky!\nSky, Sky bo By Bonana fanna fo Fy\nFee fy mo My, Sky!", StringUtils.nameGame("Sky"));
+    	assertEquals("Cyndy!\nCyndy, Cyndy bo Byndy Bonana fanna fo Fyndy\nFee fy mo Myndy, Cyndy!", StringUtils.nameGame("Cyndy"));
+    	
     }
 }

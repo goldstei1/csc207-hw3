@@ -156,25 +156,27 @@ public class StringUtils {
 		//list of vowels
 		char[] vowels = {'a', 'e', 'i', 'o', 'u', 'y'};
 		StringBuffer nameStub = new StringBuffer(name);
-		
+		String ns = "";
 		int v;
+		
+		nameStub.setCharAt(0, Character.toLowerCase(nameStub.charAt(0)));
 		
 		//remove first letter(s) of name until vowel
 		for (int i = 0; i < nameStub.length(); i++){
 			for(v = 0; v < vowels.length; v++){
 				if (nameStub.charAt(i) == vowels[v]){
-					String ns = nameStub.substring(i, nameStub.length()-1);
+					ns = nameStub.substring(i, nameStub.length()).toString();
 					break;
 				}//if
 			}//for v
-			if(vowels[v] == ns.getChar(0)){
+			if(ns.length() > 0){
 				break;
 			}//if
 		}//for i
 
 		String line1 = name + "!\n";
-		String line2 = name + ", "+name+" bo"+" B"+ns+" Bonana fanna fo F"+ns+"\n";
-		String line3 = "Fee fy mo M"+ns+", "+name;
+		String line2 = name + ", " + name + " bo" + " B" + ns + " Bonana fanna fo F" + ns +"\n";
+		String line3 = "Fee fy mo M" + ns + ", " + name + "!";
 
 		return(line1+line2+line3);
 
