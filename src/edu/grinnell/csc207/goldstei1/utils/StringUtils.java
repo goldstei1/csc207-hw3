@@ -5,8 +5,8 @@ public class StringUtils {
 
 	/**
 	 * Method to split a string at every instance of a certain
-	 *  character "splitter"
-	 * 
+	 *  character "splitter". Returns an array of the strings 
+	 *  split from the original string.
 	 */
 	public static String[] splitAt(String str, char splitter) {
 		//create new string
@@ -42,7 +42,10 @@ public class StringUtils {
 
 	/**
 	 * Method to split a string at every instance of a character "splitter"
-	 * except when this character is meant to be part of the string.
+	 *  except when this character is surrounded by quotation marks. If two
+	 *  quotation marks appear in a row, it is counted as a quotation mark
+	 *  character. Returns an array of the strings split from the original
+	 *  string. 
 	 */
 	public static String[] splitCSV(String str, char splitter) {
 
@@ -98,33 +101,41 @@ public class StringUtils {
 		return splitStrings;
 	}//splitCSV
 
+	
+	/**
+	 * Method to "deLeet" a string so that any instance of "leet"
+	 *  language in the string is changed into normal English.
+	 *  Takes a string as input and returns the deLeeted string. 
+	 */
 	public static String deLeet(String leet) {
 
 		StringBuffer editor = new StringBuffer(leet);
 		int i;
 
 		for(i = 0; i < editor.length(); i++) { //recurse through string
-		    switch (editor.charAt(i)) {
-		    case '+': editor.setCharAt(i, 't');
-		    break;
-		    case '3': editor.setCharAt(i, 'e');
-		    break;
-		    case '1': editor.setCharAt(i, 'l');
-		    break;
-		    case '0': editor.setCharAt(i, 'o');
-		    break;
-		    case '@': editor.setCharAt(i, 'a');
-		    break;
-		    case '$': editor.setCharAt(i, 's');
-		    break;
-		    case '(': editor.setCharAt(i, 'c');
-		    break;
-		    case '|': if(i + 2 < editor.length()) {
-			if(editor.substring(i, i+3).toString().equals("|\\|")) {
-			    editor.replace(i, i+3, "n");
+			//All of the characters that must be changed
+			switch (editor.charAt(i)) {
+			case '+': editor.setCharAt(i, 't');
+			break;
+			case '3': editor.setCharAt(i, 'e');
+			break;
+			case '1': editor.setCharAt(i, 'l');
+			break;
+			case '0': editor.setCharAt(i, 'o');
+			break;
+			case '@': editor.setCharAt(i, 'a');
+			break;
+			case '$': editor.setCharAt(i, 's');
+			break;
+			case '(': editor.setCharAt(i, 'c');
+			break;
+			case '|': if(i + 2 < editor.length()) { //Makes sure to not
+													//pass bounds of string.
+				if(editor.substring(i, i+3).toString().equals("|\\|")) {
+					editor.replace(i, i+3, "n");
 					break;
 				}//if(editor.substring...)
-				if(editor.substring(i, i+3).toString().equals("|_|")) {
+				else if(editor.substring(i, i+3).toString().equals("|_|")) {
 					editor.replace(i,  i+3, "u");
 					break;
 				}//if(editor.substring...)
@@ -136,7 +147,7 @@ public class StringUtils {
 					editor.replace(i,  i+2, "b");
 					break;
 				}//if(editor.substring...)
-				if(editor.substring(i, i+2).toString().equals("|=")) {
+				else if(editor.substring(i, i+2).toString().equals("|=")) {
 					editor.replace(i,  i+2, "f");
 					break;
 				}//if(editor.substring...)
@@ -151,6 +162,12 @@ public class StringUtils {
 		return editor.toString();
 	}//deLeet
 
+	
+	/**
+	 * Method that takes a string, a name, and returns a string 
+	 *  that is a rhyme that follows the rules of the song 
+	 *  "The Name Game", by Shirley Ellis.
+	 */
 	public static String nameGame(String name){
 		//list of vowels
 		char[] vowels = {'a', 'e', 'i', 'o', 'u', 'y'};

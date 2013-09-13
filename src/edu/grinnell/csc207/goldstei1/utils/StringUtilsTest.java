@@ -45,7 +45,9 @@ public class StringUtilsTest {
     	assertEquals("leet", StringUtils.deLeet("133+"));
     	assertEquals("eat banana", StringUtils.deLeet("3@+ |3@|\\|@|\\|@"));
     	assertEquals("tuff stuff", StringUtils.deLeet("+|_||=|= $+|_||=|="));
+    	assertEquals("ban", StringUtils.deLeet("|3@|\\|"));
     	assertEquals("last case", StringUtils.deLeet("1@$+ (@$3"));
+    	
     }
     
     @Test
