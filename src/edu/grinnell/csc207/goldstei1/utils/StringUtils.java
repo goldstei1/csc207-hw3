@@ -105,24 +105,24 @@ public class StringUtils {
 		int i;
 
 		for(i = 0; i < editor.length(); i++) { //recurse through string
-			switch (editor.charAt(i)) {
-			case '+': editor.setCharAt(i, 't');
-			break;
-			case '3': editor.setCharAt(i, 'e');
-			break;
-			case '1': editor.setCharAt(i, 'l');
-			break;
-			case '0': editor.setCharAt(i, 'o');
-			break;
-			case '@': editor.setCharAt(i, 'a');
-			break;
-			case '$': editor.setCharAt(i, 's');
-			break;
-			case '(': editor.setCharAt(i, 'c');
-			break;
-			case '|': if(i + 2 < editor.length()) {
-				if(editor.substring(i, i+3).toString().equals("|\\|")) {
-					editor.replace(i, i+3, "n");
+		    switch (editor.charAt(i)) {
+		    case '+': editor.setCharAt(i, 't');
+		    break;
+		    case '3': editor.setCharAt(i, 'e');
+		    break;
+		    case '1': editor.setCharAt(i, 'l');
+		    break;
+		    case '0': editor.setCharAt(i, 'o');
+		    break;
+		    case '@': editor.setCharAt(i, 'a');
+		    break;
+		    case '$': editor.setCharAt(i, 's');
+		    break;
+		    case '(': editor.setCharAt(i, 'c');
+		    break;
+		    case '|': if(i + 2 < editor.length()) {
+			if(editor.substring(i, i+3).toString().equals("|\\|")) {
+			    editor.replace(i, i+3, "n");
 					break;
 				}//if(editor.substring...)
 				if(editor.substring(i, i+3).toString().equals("|_|")) {
@@ -179,7 +179,6 @@ public class StringUtils {
 		String line3 = "Fee fy mo M" + ns + ", " + name + "!";
 
 		return(line1+line2+line3);
-
 	}//nameGame
 }//StringUtils
 
