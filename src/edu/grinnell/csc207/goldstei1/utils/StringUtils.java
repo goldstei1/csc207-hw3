@@ -68,7 +68,7 @@ public class StringUtils {
 		//then loop through string again
 		//fill temporary StringBuffer with characters until we reach valid splitter
 		int arrayPosition = 0;
-		int inQuote = 0;
+		boolean inQuote = false;
 		StringBuffer part = new StringBuffer();
 
 		for (int i = 0; i < str.length(); i++) {
@@ -77,14 +77,14 @@ public class StringUtils {
 					i++;
 					part.append(str.charAt(i));
 				}//if
-				else if(inQuote == 1) { //if in quote mode, go out of quote mode
-					inQuote = 0;
+				else if(inQuote) { //if in quote mode, go out of quote mode
+					inQuote = false;
 				}//else if
 				else { 
-					inQuote = 1; //when not in quote mode, go into quote mode		
+					inQuote = true; //when not in quote mode, go into quote mode		
 				}//else	
 			}//if
-			else if(str.charAt(i) == splitter && inQuote == 0) {
+			else if(str.charAt(i) == splitter && !inQuote) {
 				splitStrings[arrayPosition] = part.toString();
 				arrayPosition++;
 				part.delete(0, part.length());
@@ -93,8 +93,7 @@ public class StringUtils {
 				part.append(str.charAt(i));
 			}//else
 		}//for
-
-
+		
 		splitStrings[arrayPosition] = part.toString();
 		return splitStrings;
 	}//splitCSV
