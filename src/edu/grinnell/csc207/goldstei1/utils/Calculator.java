@@ -65,5 +65,45 @@ public class Calculator {
 		}//While
 
 		return endValue;
+	}//eval0
+	
+	
+	public static int[] fewestCoins(int amount) {
+		
+		int wot = 2;
+		int eater = 7;
+		int stickpair = 11;
+		int deck = 54;
+		int test = 0;
+		int currentMin = -1;
+		int[] coinCount = new int[4];
+		
+		//loop through all the permutations
+		for(int i = 0; i <= amount/wot; i++) {
+			test += wot*i;
+			for(int j = 0; j <= amount/eater; j++) {
+				test += eater*j;
+				for(int k = 0; k <= amount/stickpair; k++) {
+					test += stickpair*k;
+					for(int p = 0; p <= amount/deck; p++) {
+						test += deck*p;
+						if(test == amount) {
+							if(i + j + k + p < currentMin || currentMin == -1) {
+								coinCount[0] = wot*i;
+								coinCount[1] = eater*j;
+								coinCount[2] = stickpair*k;
+								coinCount[3] = deck*p;
+								currentMin = i + j + k + p;
+							}//if
+						}//if
+						test -= deck*p;		
+					}//for(p)
+					test -= stickpair*k;
+				}//for(k)
+				test -= eater*j;
+			}//for(j)
+			test -= wot*i;
+		}//for(i)
+		return coinCount;	
 	}
 }
