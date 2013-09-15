@@ -28,8 +28,7 @@ public class CalculatorTest {
     	assertArrayEquals(new int[] {0, 0, 0, 0}, Calculator.fewestCoins(0));
     	assertArrayEquals(new int[] {0, 14, 11, 0}, Calculator.fewestCoins(25));
     	assertArrayEquals(new int[] {0, 28, 0, 0}, Calculator.fewestCoins(28));
-    	assertArrayEquals(new int[] {0, 0, 0, 0}, Calculator.fewestCoins(3));
-
+    	assertArrayEquals(new int[] {0,0,0,108}, Calculator.fewestCoins(108));
         }
 
 
