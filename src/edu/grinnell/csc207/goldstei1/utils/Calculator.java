@@ -78,7 +78,8 @@ public class Calculator {
 		int currentMin = -1;
 		int[] coinCount = new int[4];
 		
-		//loop through all the permutations
+		//loop through all the permutations and if their sum = amount
+		// then check if 
 		for(int i = 0; i <= amount/wot; i++) {
 			test += wot*i;
 			for(int j = 0; j <= amount/eater; j++) {
@@ -94,8 +95,8 @@ public class Calculator {
 								coinCount[2] = stickpair*k;
 								coinCount[3] = deck*p;
 								currentMin = i + j + k + p;
-							}//if
-						}//if
+							}//if(i+j+k+p....)
+						}//if(test=amount)
 						test -= deck*p;		
 					}//for(p)
 					test -= stickpair*k;
