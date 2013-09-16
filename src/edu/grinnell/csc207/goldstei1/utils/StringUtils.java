@@ -1,3 +1,12 @@
+/**@author - Mira Hall
+ * @author - Daniel Goldstien
+ * Citations:
+ * wikipedia page on the name game to find correct examples of verses and
+ * also to get the algorithm for names beginning with vowel:
+ * http://en.wikipedia.org/wiki/The_Name_Game
+ * on 9/12/13
+**/
+
 package edu.grinnell.csc207.goldstei1.utils;
 
 public class StringUtils {

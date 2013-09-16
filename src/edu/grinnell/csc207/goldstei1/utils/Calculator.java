@@ -1,3 +1,7 @@
+/**
+ * @author - Mira Hall
+ * @author - Daniel Goldstien
+ */
 package edu.grinnell.csc207.goldstei1.utils;
 
 import java.math.BigInteger;
@@ -9,19 +13,20 @@ public class Calculator {
 	 * Method to solve a mathematical expression given as a string
 	 *  with spaces between each number and operation. The numbers
 	 *  in the string can be larger than a normal integer.
+	 *  Preconditions: a number following a '^' cannot be larger than Integer.MAX_VALUE
 	 */
 	public static BigInteger eval0(String expression) {
 
 		StringBuffer evaluator = new StringBuffer(expression);
 		BigInteger endValue = new BigInteger("0"); //first number in string is added later
-		char nextOperation = '+'; // first operation is always add
+		char nextOperation = '+'; // first operation is always add (add first number to 0)
 		int begOfNum;
 		int i = 0; //starting index of the evaluator string
 
 
 		while (i < evaluator.length()) {
-			//Check for which operation will happen next
-			// first time through will skip this section
+			//Check for which operation is going to be performed.
+			// Skipped first time through the loop
 			switch (evaluator.charAt(i)) {
 			case '+': nextOperation = '+';
 			i += 2;
@@ -39,15 +44,18 @@ public class Calculator {
 			i += 2;
 			break;
 			}//switch
+			
+			//find all digits of the next number
+			
+			begOfNum = i; //index of the beginning of the next number
 
-			//index of the beginning of the next number
-			begOfNum = i;
-
-			while(i < evaluator.length() && evaluator.charAt(i) != ' ') {
+			while(i < evaluator.length() && evaluator.charAt(i) != ' ') { //find any more digits of the next number
 				i++;
 			}//while
-
-			//end of next number is now i so do the operation
+			//end of next number is now i
+			
+			//perform nextOperation on endValue and the number represented by the 
+			// substring between begNum and i
 			switch (nextOperation) {
 			case '+': endValue = endValue.add(new BigInteger(evaluator.substring(begOfNum, i).toString()));
 			break;
@@ -68,6 +76,14 @@ public class Calculator {
 	}//eval0
 	
 	
+	/**
+	 * Method that takes an int amount and returns an array of ints that
+	 *  specify the amount provided by each coin in the combination of coins that 
+	 *  uses the lowest number of coins total. This method can easily be 
+	 *  generalized by simply changing the values of the coins or adding 
+	 *  parameters that take the value of each coin. 
+	 *  Precondition: amount cannot equal 1, 3, or 5.
+	 */
 	public static int[] fewestCoins(int amount) {
 		
 		int wot = 2;
@@ -81,9 +97,12 @@ public class Calculator {
 		int maxStickpair = amount/stickpair;
 		int maxDeck = amount/deck;
 		int[] coinCount = new int[4];
+		int currentCount;
 		
 		//loop through all the permutations and if their sum = amount
-		// then check if 
+		// then check if the number of coins used is less than previous 
+		// possibilities
+		
 		for(int i = 0; i <= maxWot; i++) {
 			testNum += wot*i;
 			for(int j = 0; j <= maxEater; j++) {
@@ -93,12 +112,14 @@ public class Calculator {
 					for(int p = 0; p <= maxDeck; p++) {
 						testNum += deck*p;
 						if(testNum == amount) {
-							if(i + j + k + p < currentMin || currentMin == -1) {
+							currentCount = i +j + k + p;
+							if(currentCount < currentMin || currentMin == -1) {
+								//set coinCount to current coin values
 								coinCount[0] = wot*i;
 								coinCount[1] = eater*j;
 								coinCount[2] = stickpair*k;
 								coinCount[3] = deck*p;
-								currentMin = i + j + k + p;
+								currentMin = currentCount;
 							}//if(i+j+k+p....)
 						}//if(test=amount)
 						testNum -= deck*p;		

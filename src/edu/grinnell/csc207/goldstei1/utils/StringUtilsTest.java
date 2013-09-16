@@ -36,6 +36,10 @@ public class StringUtilsTest {
     			StringUtils.splitCSV("Jenny said, \"\"I lost, Bob\"\", to Bob", ','));
     	assertArrayEquals(new String[] { "Jenny said", " \"I lost, Bob\"", " to Bob" },
     			StringUtils.splitCSV("Jenny said, \"\"I lost\",\" Bob\"\", to Bob", ','));
+    	assertArrayEquals(new String[] { "superc", "lifr", "g", "listicexpi", "lidocious" },
+    			StringUtils.splitCSV("supercalifragalisticexpialidocious", 'a'));
+    	assertArrayEquals(new String[] { "supercalifr", "g", "listicexpi", "lidocious" },
+    			StringUtils.splitCSV("super\"cali\"fragalisti\"cex\"pialidocious", 'a'));
     	
     }
     
