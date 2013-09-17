@@ -1,5 +1,9 @@
-/**@author - Mira Hall
+/**
+ * CSC207 Assignment 3
+ * 
+ * @author - Mira Hall
  * @author - Daniel Goldstien
+ * 
  * Citations:
  * wikipedia page on the name game to find correct examples of verses and
  * also to get the algorithm for names beginning with vowel:
@@ -54,7 +58,9 @@ public class StringUtils {
 	 *  except when this character is surrounded by quotation marks. If two
 	 *  quotation marks appear in a row, it is counted as a quotation mark
 	 *  character. Returns an array of the strings split from the original
-	 *  string. 
+	 *  string.
+	 *  Precondition: Single quotation marks must match up and be closed
+	 *  	(there must be an even number of quotation marks in input)
 	 */
 	public static String[] splitCSV(String str, char splitter) {
 
@@ -107,10 +113,7 @@ public class StringUtils {
 		}//for
 		
 		splitStrings[arrayPosition] = part.toString();
-		if (inQuote == true){
-			String[] error = {"Error: unmatched parenthesis."};
-			return error;
-		}
+
 		return splitStrings;
 	}//splitCSV
 

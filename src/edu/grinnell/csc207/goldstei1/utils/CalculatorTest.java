@@ -24,11 +24,12 @@ public class CalculatorTest {
     
     @Test
     public void fewestCoinsTest() {
-    	assertArrayEquals(new int[] {0, 0, 55, 0}, Calculator.fewestCoins(55));
+    	assertArrayEquals(new int[] {0, 0, 5, 0}, Calculator.fewestCoins(55));
     	assertArrayEquals(new int[] {0, 0, 0, 0}, Calculator.fewestCoins(0));
-    	assertArrayEquals(new int[] {0, 14, 11, 0}, Calculator.fewestCoins(25));
-    	assertArrayEquals(new int[] {0, 28, 0, 0}, Calculator.fewestCoins(28));
-    	assertArrayEquals(new int[] {0,0,0,108}, Calculator.fewestCoins(108));
+    	assertArrayEquals(new int[] {0, 2, 1, 0}, Calculator.fewestCoins(25));
+    	assertArrayEquals(new int[] {0, 4, 0, 0}, Calculator.fewestCoins(28));
+    	assertArrayEquals(new int[] {0,0,0,2}, Calculator.fewestCoins(108));
+    	assertArrayEquals(new int[] {1,1,1,0}, Calculator.fewestCoins(20));
         }
 
 

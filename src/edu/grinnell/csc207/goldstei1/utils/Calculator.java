@@ -7,7 +7,8 @@ package edu.grinnell.csc207.goldstei1.utils;
 import java.math.BigInteger;
 
 public class Calculator {
-    
+
+	
     
 	/**
 	 * Method to solve a mathematical expression given as a string
@@ -74,12 +75,11 @@ public class Calculator {
 
 		return endValue;
 	}//eval0
-	
-	
+
 	/**
-	 * Method that takes an int amount and returns an array of ints that
-	 *  specify the amount provided by each coin in the combination of coins that 
-	 *  uses the lowest number of coins total. This method can easily be 
+	 * Method that takes an integer amount and returns an array of integers that
+	 *  specify the number of each coin needed in order to total to amount and 
+	 *  use the lowest number of coins possible. This method can easily be 
 	 *  generalized by simply changing the values of the coins or adding 
 	 *  parameters that take the value of each coin. 
 	 *  Precondition: amount cannot equal 1, 3, or 5.
@@ -87,6 +87,7 @@ public class Calculator {
 	 *  returns a null array
 	 */
 	public static int[] fewestCoins(int amount) {
+		
 		
 		int wot = 2;
 		int eater = 7;
@@ -99,7 +100,7 @@ public class Calculator {
 		int maxStickpair = amount/stickpair;
 		int maxDeck = amount/deck;
 		int[] coinCount = new int[4];
-		int currentCount;
+		int currentCoinCount;
 		
 		//loop through all the permutations and if their sum = amount
 		// then check if the number of coins used is less than previous 
@@ -114,14 +115,14 @@ public class Calculator {
 					for(int p = 0; p <= maxDeck; p++) {
 						testNum += deck*p;
 						if(testNum == amount) {
-							currentCount = i +j + k + p;
-							if(currentCount < currentMin || currentMin == -1) {
+							currentCoinCount = i +j + k + p;
+							if(currentCoinCount < currentMin || currentMin == -1) {
 								//set coinCount to current coin values
-								coinCount[0] = wot*i;
-								coinCount[1] = eater*j;
-								coinCount[2] = stickpair*k;
-								coinCount[3] = deck*p;
-								currentMin = currentCount;
+								coinCount[0] = i;
+								coinCount[1] = j;
+								coinCount[2] = k;
+								coinCount[3] = p;
+								currentMin = currentCoinCount;
 							}//if(i+j+k+p....)
 						}//if(test=amount)
 						testNum -= deck*p;		
