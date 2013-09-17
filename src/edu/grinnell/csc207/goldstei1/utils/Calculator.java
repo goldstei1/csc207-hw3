@@ -83,6 +83,8 @@ public class Calculator {
 	 *  generalized by simply changing the values of the coins or adding 
 	 *  parameters that take the value of each coin. 
 	 *  Precondition: amount cannot equal 1, 3, or 5.
+	 *  Postcondition: if there is no way to make amount out of the specified,
+	 *  returns a null array
 	 */
 	public static int[] fewestCoins(int amount) {
 		

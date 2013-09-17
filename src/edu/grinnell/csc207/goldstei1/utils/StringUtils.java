@@ -107,6 +107,10 @@ public class StringUtils {
 		}//for
 		
 		splitStrings[arrayPosition] = part.toString();
+		if (inQuote == true){
+			String[] error = {"Error: unmatched parenthesis."};
+			return error;
+		}
 		return splitStrings;
 	}//splitCSV
 
