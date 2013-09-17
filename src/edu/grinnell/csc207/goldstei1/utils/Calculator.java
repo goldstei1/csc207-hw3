@@ -1,4 +1,6 @@
 /**
+ * CSC207 Assignment 3 parts E and F
+ * 
  * @author - Mira Hall
  * @author - Daniel Goldstien
  */

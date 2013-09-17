@@ -1,5 +1,5 @@
 /**
- * CSC207 Assignment 3
+ * CSC207 Assignment 3 parts A-D
  * 
  * @author - Mira Hall
  * @author - Daniel Goldstien
@@ -206,6 +206,7 @@ public class StringUtils {
 			}//if
 		}//for i
 
+		//Create Rhyme
 		String line1 = name + "!\n";
 		String line2 = name + ", " + name + " bo" + " B" + ns + " Bonana fanna fo F" + ns +"\n";
 		String line3 = "Fee fy mo M" + ns + ", " + name + "!";
